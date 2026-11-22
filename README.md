@@ -19,8 +19,8 @@ verification-site/
 
 ## Deploy no Vercel
 
-1. Crie um projeto novo no Vercel apontando **apenas** para esta pasta `verification-site`.
-   - Se o repositório estiver na raiz, defina **Root Directory** = `verification-site`.
+1. No Vercel, importe o repositório `mathzdevolper/winchestersystem`.
+   - O conteúdo do site está na **raiz do repositório** — deixe **Root Directory** vazio.
 2. Em **Settings → Environment Variables**, adicione:
 
 | Variável | Valor |
