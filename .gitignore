@@ -1,0 +1,10 @@
+# Nunca versionar credenciais reais
+.env
+.env.*
+!.env.example
+
+# Node / Vercel
+node_modules/
+.vercel/
+*.log
+.DS_Store

@@ -1,0 +1,9 @@
+{
+  "name": "wichester-verify",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Site de verificação Discord via OAuth2 + PKCE, pronto para Vercel.",
+  "engines": {
+    "node": ">=18"
+  }
+}

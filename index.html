@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Verificação de identidade Discord via OAuth2 com PKCE." />
+  <title>Wichester Verify — Verificação Discord</title>
+  <link rel="preconnect" href="https://cdn.discordapp.com" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="bg-glow glow-a"></div>
+  <div class="bg-glow glow-b"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">W</span>
+      <span>Wichester <b>Verify</b></span>
+    </div>
+    <span class="status-pill"><span class="dot"></span> Sistema online</span>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="eyebrow">AUTENTICAÇÃO SEGURA</div>
+      <h1>Verifique sua identidade <span>Discord</span></h1>
+      <p>
+        Autorização oficial via OAuth2 com PKCE. Sem senhas, sem copiar tokens —
+        apenas uma confirmação direta da sua conta pelo Discord.
+      </p>
+      <div class="badges">
+        <span class="badge">OAuth2 · PKCE S256</span>
+        <span class="badge">Serverless</span>
+        <span class="badge">Vercel-ready</span>
+      </div>
+    </section>
+
+    <section class="card" id="verifyCard">
+      <div class="card-head">
+        <h2>Iniciar verificação</h2>
+        <span id="stepLabel" class="step">Etapa 1 de 2</span>
+      </div>
+
+      <!-- LOGIN -->
+      <div id="loginView">
+        <button class="btn primary" id="oauthBtn">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path fill="currentColor" d="M20.3 4.4A19.8 19.8 0 0 0 15.4 3l-.3.6a14.3 14.3 0 0 1 4.2 1.5 13.8 13.8 0 0 0-11.9 0 14.3 14.3 0 0 1 4.2-1.5L11.3 3a19.8 19.8 0 0 0-4.9 1.4C3.6 8.2 2.9 11.9 3.2 15.6a19.9 19.9 0 0 0 6 3l.8-1.3a12.8 12.8 0 0 1-2.1-1l.5-.4a14.2 14.2 0 0 0 12.2 0l.5.4a12.8 12.8 0 0 1-2.1 1l.8 1.3a19.9 19.9 0 0 0 6-3c.4-4.2-.7-7.9-3.5-11.2ZM9.3 13.7c-1.2 0-2.1-1.1-2.1-2.4s.9-2.4 2.1-2.4c1.2 0 2.2 1.1 2.1 2.4s-.9 2.4-2.1 2.4Zm5.4 0c-1.2 0-2.1-1.1-2.1-2.4s.9-2.4 2.1-2.4c1.2 0 2.2 1.1 2.1 2.4s-.9 2.4-2.1 2.4Z" />
+          </svg>
+          Verificar com Discord
+        </button>
+
+        <div class="divider"><span>ou</span></div>
+
+        <label for="tokenInput">Verificar por token (avançado)</label>
+        <div class="input-row">
+          <input id="tokenInput" type="password" placeholder="Cole seu token Discord"
+                 autocomplete="off" spellcheck="false" />
+          <button class="btn ghost" id="tokenBtn">Verificar</button>
+        </div>
+        <p class="hint" id="configHint">Carregando configuração do servidor...</p>
+      </div>
+
+      <!-- LOADING -->
+      <div id="loadingView" hidden>
+        <div class="spinner"></div>
+        <p id="loadingText">Abrindo o Discord...</p>
+        <p class="hint">Autorize na janela que abrir e volte a esta página.</p>
+      </div>
+
+      <!-- RESULT -->
+      <div id="resultView" hidden>
+        <div class="avatar-wrap">
+          <img id="avatar" alt="Avatar do usuário" />
+          <span class="verified-check">✓</span>
+        </div>
+        <h3 id="resultName"></h3>
+        <p id="resultTag" class="muted"></p>
+        <div class="verified"><span>✓</span> Conta verificada</div>
+        <div class="meta">
+          <div><span>ID</span><code id="resultId"></code></div>
+          <div><span>E-mail</span><code id="resultEmail"></code></div>
+          <div><span>Conta criada</span><code id="resultCreated"></code></div>
+          <div><span>2FA</span><code id="resultMfa"></code></div>
+        </div>
+        <button class="btn ghost" id="resetBtn">Verificar outra conta</button>
+      </div>
+
+      <!-- ERROR -->
+      <div id="errorView" hidden>
+        <div class="error-icon">!</div>
+        <h3>Falha na verificação</h3>
+        <p id="errorText" class="error-text"></p>
+        <button class="btn ghost" id="backBtn">Tentar novamente</button>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feature">
+        <div class="feature-ico">◇</div>
+        <h4>Privacidade</h4>
+        <p>Nada é armazenado. Os dados aparecem só nesta sessão.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-ico">⌘</div>
+        <h4>Sem senha</h4>
+        <p>Autorização feita pelo próprio Discord, via OAuth2.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-ico">↗</div>
+        <h4>Deploy isolado</h4>
+        <p>Pasta independente, pronta para subir no Vercel.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>Wichester Verify · site separado · 2026</footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>
